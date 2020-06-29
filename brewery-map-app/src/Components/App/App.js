@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Landing from '../Landing/Landing';
@@ -17,10 +17,25 @@ function App() {
 	const [ city, setCity ] = useState('');
 
 	console.log('App breweryData', breweryData);
-	console.log('App faves', faves);
-	console.log('App wishlist', wishlist);
-	console.log('App visited', visited);
-	console.log('filter', filter);
+	// console.log('App faves', faves);
+	// console.log('App wishlist', wishlist);
+	// console.log('App visited', visited);
+	// console.log('filter', filter);
+
+	const makeApiCall = async () => {
+		let url = 'https://api.openbrewerydb.org/breweries?per_page=50&by_city=' + city;
+		const res = await fetch(url);
+		const json = await res.json();
+		console.log('json in makeApiCall', json);
+		setBreweryData(json);
+	};
+
+	useEffect(
+		() => {
+			makeApiCall();
+		},
+		[ city ]
+	);
 
 	return (
 		<div className="App">

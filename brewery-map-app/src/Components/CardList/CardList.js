@@ -18,7 +18,7 @@ function CardList() {
 		breweryArr = dataContext.breweryData;
 	}
 
-	const breweries = breweryArr.map((brewery) => <Card brewery={brewery} />);
+	const breweries = breweryArr.map((brewery) => <Card key={brewery.id} brewery={brewery} />);
 
 	return <div className="CardList">{breweries}</div>;
 }

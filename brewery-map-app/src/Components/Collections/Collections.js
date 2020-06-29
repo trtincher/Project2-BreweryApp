@@ -1,14 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import CardList from '../CardList/CardList';
+import Search from '../Search/Search';
 import { DataContext } from '../App/App';
 import './Collections.css';
-import Form from '../Form/Form';
 
 function Collections() {
 	const dataContext = useContext(DataContext);
 	//console.log('dataContext', dataContext);
 
+	useEffect(() => {
+		dataContext.setFilter('VISITED');
+	}, []);
+
 	const handleFilterClick = (e) => dataContext.setFilter(e.target.innerText);
+	console.log('dataContext', dataContext.filter);
 
 	return (
 		<div className="Collections">
@@ -23,8 +28,8 @@ function Collections() {
 					FAVES
 				</div>
 			</div>
-			<Form />
-			<h1>{'Your ' + (dataContext.city === '' ? '' : dataContext.city) + ' Breweries'}</h1>
+			{/* <Search /> */}
+			<h1>{dataContext.filter + ' BREWERIES'}</h1>
 			<CardList />
 		</div>
 	);

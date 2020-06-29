@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Card.css';
 import { DataContext } from '../App/App';
 
@@ -39,7 +39,7 @@ function Card({ brewery }) {
 	};
 
 	return (
-		<div key={brewery.id} className="Card">
+		<div className="Card">
 			<h3>{brewery.name}</h3>
 			<div className="iconDiv">
 				<div className="toggleDiv">
