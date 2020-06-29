@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './Card.css';
 import { DataContext } from '../App/App';
 
 function Card({ brewery }) {
 	const dataContext = useContext(DataContext);
-	const [ favStatus, setFavStatus ] = useState(false);
-	const [ visitedStatus, setVisitedStatus ] = useState(false);
-	const [ wishlistStatus, setWishlistStatus ] = useState(false);
 	//console.log('dataContext', dataContext);
+
+	let favFilter = dataContext.faves.indexOf(brewery) === -1 ? 'far' : 'fas';
+	let wishFilter = dataContext.wishlist.indexOf(brewery) === -1 ? 'far' : 'fas';
+	let visitFilter = dataContext.visited.indexOf(brewery) === -1 ? 'far' : 'fas';
 
 	const handleFaveToggle = (brewery) => {
 		const favesArray = [ ...dataContext.faves ];
@@ -15,8 +16,6 @@ function Card({ brewery }) {
 		console.log('handleFaveToggle brewery', brewery);
 
 		breweryIndex === -1 ? favesArray.push(brewery) : favesArray.splice(breweryIndex, 1);
-
-		setFavStatus(!favStatus);
 
 		dataContext.setFaves(favesArray);
 	};
@@ -27,8 +26,6 @@ function Card({ brewery }) {
 
 		breweryIndex === -1 ? wishlistArray.push(brewery) : wishlistArray.splice(breweryIndex, 1);
 
-		setWishlistStatus(!wishlistStatus);
-
 		dataContext.setWishlist(wishlistArray);
 	};
 
@@ -38,28 +35,22 @@ function Card({ brewery }) {
 
 		breweryIndex === -1 ? visitedArray.push(brewery) : visitedArray.splice(breweryIndex, 1);
 
-		setVisitedStatus(!visitedStatus);
-
 		dataContext.setVisited(visitedArray);
 	};
 
 	return (
 		<div key={brewery.id} className="Card">
 			<h3>{brewery.name}</h3>
-			<form>
+			<div className="iconDiv">
 				<div className="toggleDiv">
+					<i className={`${favFilter} fa-heart`} id="fav-icon" onClick={() => handleFaveToggle(brewery)} />
 					<i
-						className={`${favStatus ? 'fas' : 'far'} fa-heart`}
-						id="fav-icon"
-						onClick={() => handleFaveToggle(brewery)}
-					/>
-					<i
-						className={`${wishlistStatus ? 'fas' : 'far'} fa-star`}
+						className={`${wishFilter} fa-star`}
 						id="fav-icon"
 						onClick={() => handleWishlistToggle(brewery)}
 					/>
 					<i
-						className={`${visitedStatus ? 'fas' : 'far'} fa-check-circle`}
+						className={`${visitFilter} fa-check-circle`}
 						id="fav-icon"
 						onClick={() => handleVisitedToggle(brewery)}
 					/>
@@ -69,7 +60,7 @@ function Card({ brewery }) {
 					<span>Wishlist</span>
 					<span>Visited</span>
 				</div>
-			</form>
+			</div>
 		</div>
 	);
 }

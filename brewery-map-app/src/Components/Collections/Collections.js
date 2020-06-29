@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import CardList from '../CardList/CardList';
 import { DataContext } from '../App/App';
 import './Collections.css';
-import Search from '../Search/Search';
+import Form from '../Form/Form';
 
 function Collections() {
 	const dataContext = useContext(DataContext);
@@ -14,9 +14,6 @@ function Collections() {
 		<div className="Collections">
 			<div className="filter-tabs">
 				<div className="filter-group" onClick={handleFilterClick}>
-					ALL
-				</div>
-				<div className="filter-group" onClick={handleFilterClick}>
 					VISITED
 				</div>
 				<div className="filter-group" onClick={handleFilterClick}>
@@ -26,8 +23,8 @@ function Collections() {
 					FAVES
 				</div>
 			</div>
-			<Search />
-			<h1>{(dataContext.city === '' ? 'All' : dataContext.city) + ' Breweries'}</h1>
+			<Form />
+			<h1>{'Your ' + (dataContext.city === '' ? '' : dataContext.city) + ' Breweries'}</h1>
 			<CardList />
 		</div>
 	);

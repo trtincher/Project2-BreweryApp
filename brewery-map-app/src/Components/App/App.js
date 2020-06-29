@@ -13,7 +13,7 @@ function App() {
 	const [ faves, setFaves ] = useState([]);
 	const [ wishlist, setWishlist ] = useState([]);
 	const [ visited, setVisited ] = useState([]);
-	const [ filter, setFilter ] = useState([]);
+	const [ filter, setFilter ] = useState('');
 	const [ city, setCity ] = useState('');
 
 	console.log('App breweryData', breweryData);
@@ -42,7 +42,8 @@ function App() {
 			>
 				<NavBar />
 				<Route exact path="/" component={Landing} />
-				<Route exact path="/collections" component={Collections} />
+				<Route path="/collections" component={Collections} />
+				<Route path="/search" component={Search} />
 			</DataContext.Provider>
 		</div>
 	);

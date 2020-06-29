@@ -10,14 +10,13 @@ function Form({ setCity }) {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log('Form.js onSubmit Clicked');
+		//console.log('Form.js onSubmit Clicked');
 		setCity(input);
 		setInput('');
 	};
 
 	return (
 		<div className="Form">
-			<h3>Find Breweries By Location</h3>
 			<form onSubmit={onSubmit}>
 				<input type="text" placeholder="Search by City" value={input} onChange={handleChange} />
 				<input type="submit" />
