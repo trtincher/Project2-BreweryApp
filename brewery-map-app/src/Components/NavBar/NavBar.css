@@ -1,0 +1,13 @@
+.NavBar {
+	background-color: grey;
+}
+
+.NavBar nav {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.NavBar a {
+	color: white;
+	text-decoration: none;
+}
