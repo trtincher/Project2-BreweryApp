@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Form from '../Form/Form';
-import CardList from '../CardList/CardList';
+import { DataContext } from '../App/App';
 
 function Search() {
-	const [ city, setCity ] = useState('');
-	const [ breweryData, setBreweryData ] = useState({});
+	const dataContext = useContext(DataContext);
 
 	useEffect(
 		() => {
-			let url = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
-			console.log(city);
+			let url = 'https://api.openbrewerydb.org/breweries?by_city=' + dataContext.city;
+			//console.log(city);
 			const makeApiCall = async () => {
 				const res = await fetch(url);
 				const json = await res.json();
 				console.log('json in makeApiCall', json);
-				setBreweryData(json);
+				dataContext.setBreweryData(json);
 			};
 			makeApiCall();
 		},
-		[ city ]
+		[ dataContext.city ]
 	);
-	console.log('Search breweryData', breweryData);
+	//console.log('Search breweryData', dataContext.breweryData);
 
 	return (
 		<div className="Search">
-			<Form setCity={setCity} />
-			{breweryData[0] ? <CardList breweryData={breweryData} /> : 'loading...'}
+			<Form setCity={dataContext.setCity} />
 		</div>
 	);
 }

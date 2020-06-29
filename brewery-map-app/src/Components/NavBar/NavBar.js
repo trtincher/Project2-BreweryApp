@@ -8,7 +8,6 @@ function NavBar() {
 			<nav>
 				<Link to="/">Map</Link>
 				<Link to="/collections">Collections</Link>
-				<Link to="/search">Search</Link>
 			</nav>
 		</div>
 	);

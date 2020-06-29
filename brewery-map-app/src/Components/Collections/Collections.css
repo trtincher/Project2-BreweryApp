@@ -1,0 +1,10 @@
+.Collections {
+	background-color: darkgray;
+}
+
+.filter-tabs {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: lightgrey;
+	font-size: 2rem;
+}
