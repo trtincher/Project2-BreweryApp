@@ -4,7 +4,7 @@ import { DataContext } from '../App/App';
 
 function CardList() {
 	const dataContext = useContext(DataContext);
-	console.log('CardList.js datacontext', dataContext);
+	// console.log('CardList.js datacontext', dataContext);
 
 	let breweryArr = [];
 
@@ -18,7 +18,10 @@ function CardList() {
 		breweryArr = dataContext.breweryData;
 	}
 
-	const breweries = breweryArr.map((brewery) => <Card key={brewery.id} brewery={brewery} />);
+	const breweries = breweryArr.map((brewery) => {
+		let inFaves = dataContext.faves.findIndex((el) => el.name === brewery.name)
+		return <Card key={brewery.id} inFaves={inFaves} brewery={brewery} />
+	});
 
 	return <div className="CardList">{breweries}</div>;
 }

@@ -1,30 +1,35 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Card.css';
 import { DataContext } from '../App/App';
 
-function Card({ brewery }) {
+function Card({ brewery, inFaves }) {
 	const dataContext = useContext(DataContext);
-	//console.log('dataContext', dataContext);
-	console.log('brewery Card', brewery);
-	console.log('dataContext.faves in Card', dataContext.faves);
+	const [favFilter, setFave] = useState('far');
 
-	let favFilter = dataContext.faves.find((element) => element.name === brewery.name) === -1 ? 'far' : 'fas';
+	// let favFilter = dataContext.faves.find((element) => element.name === brewery.name) === -1 ? 'fas' : 'far';
 	let wishFilter = dataContext.wishlist.indexOf(brewery) === -1 ? 'far' : 'fas';
 	let visitFilter = dataContext.visited.indexOf(brewery) === -1 ? 'far' : 'fas';
-	console.log('favFilter Card', favFilter);
 
-	const handleFaveToggle = (brewery) => {
-		const favesArray = [ ...dataContext.faves ];
-		const breweryIndex = favesArray.indexOf(brewery);
-		console.log('handleFaveToggle brewery', brewery);
+	const handleFaveToggle = async (brewery) => {
+		const favesArray = [...dataContext.faves];
+		const breweryIndex = favesArray.findIndex((element) => {
+			return element.name === brewery.name
+		});
 
-		breweryIndex === -1 ? favesArray.push(brewery) : favesArray.splice(breweryIndex, 1);
+		if (breweryIndex === -1) {
+			favesArray.push(brewery)
+			setFave('fas')
+		} else {
+			favesArray.splice(breweryIndex, 1);
+			setFave('far')
+		}
 
-		dataContext.setFaves(favesArray);
+
+		await dataContext.setFaves(favesArray);
 	};
 
 	const handleWishlistToggle = (brewery) => {
-		const wishlistArray = [ ...dataContext.wishlist ];
+		const wishlistArray = [...dataContext.wishlist];
 		const breweryIndex = wishlistArray.indexOf(brewery);
 
 		breweryIndex === -1 ? wishlistArray.push(brewery) : wishlistArray.splice(breweryIndex, 1);
@@ -33,13 +38,17 @@ function Card({ brewery }) {
 	};
 
 	const handleVisitedToggle = (brewery) => {
-		const visitedArray = [ ...dataContext.visited ];
+		const visitedArray = [...dataContext.visited];
 		const breweryIndex = visitedArray.indexOf(brewery);
 
 		breweryIndex === -1 ? visitedArray.push(brewery) : visitedArray.splice(breweryIndex, 1);
 
 		dataContext.setVisited(visitedArray);
 	};
+
+	useEffect(() => {
+		!!inFaves ? setFave('far') : setFave('fas')
+	})
 
 	return (
 		<div className="Card">

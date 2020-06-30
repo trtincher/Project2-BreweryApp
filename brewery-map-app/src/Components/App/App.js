@@ -9,14 +9,14 @@ import './App.css';
 export const DataContext = createContext();
 
 function App() {
-	const [ breweryData, setBreweryData ] = useState([]);
-	const [ faves, setFaves ] = useState([]);
-	const [ wishlist, setWishlist ] = useState([]);
-	const [ visited, setVisited ] = useState([]);
-	const [ filter, setFilter ] = useState('');
-	const [ search, setSearch ] = useState('');
+	const [breweryData, setBreweryData] = useState([]);
+	const [faves, setFaves] = useState([]);
+	const [wishlist, setWishlist] = useState([]);
+	const [visited, setVisited] = useState([]);
+	const [filter, setFilter] = useState('');
+	const [search, setSearch] = useState('');
 
-	console.log('App breweryData', breweryData);
+	// console.log('App breweryData', breweryData);
 	// console.log('App faves', faves);
 	// console.log('App wishlist', wishlist);
 	// console.log('App visited', visited);
@@ -26,7 +26,7 @@ function App() {
 		let url = 'https://api.openbrewerydb.org/breweries/search?per_page=50&query=' + search;
 		const res = await fetch(url);
 		const json = await res.json();
-		console.log('json in makeApiCall', json);
+		// console.log('json in makeApiCall', json);
 		setBreweryData(json);
 	};
 
@@ -34,7 +34,7 @@ function App() {
 		() => {
 			makeApiCall();
 		},
-		[ search ]
+		[search]
 	);
 
 	return (
