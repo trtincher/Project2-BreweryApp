@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ReactMapGL from 'react-map-gl';
 import './Map.css';
 
-function Map() {
-	return (
-		<div className="Map">
-			<img
-				src="https://res.cloudinary.com/dugmhtotn/image/upload/v1593199814/kelsey-knight-SFRw5GChoLA-unsplash_o37o4m.jpg"
-				alt="map filler pic"
-			/>
-		</div>
-	);
+class Map extends Component {
+	state = {
+		viewport: {
+			width: 400,
+			height: 400,
+			latitude: 37.7577,
+			longitude: -122.4376,
+			zoom: 8
+		}
+	};
+
+	render() {
+		return <ReactMapGL {...this.state.viewport} onViewportChange={(viewport) => this.setState({ viewport })} />;
+	}
 }
 
 export default Map;

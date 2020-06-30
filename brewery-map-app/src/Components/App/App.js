@@ -14,7 +14,7 @@ function App() {
 	const [ wishlist, setWishlist ] = useState([]);
 	const [ visited, setVisited ] = useState([]);
 	const [ filter, setFilter ] = useState('');
-	const [ city, setCity ] = useState('');
+	const [ search, setSearch ] = useState('');
 
 	console.log('App breweryData', breweryData);
 	// console.log('App faves', faves);
@@ -23,7 +23,7 @@ function App() {
 	// console.log('filter', filter);
 
 	const makeApiCall = async () => {
-		let url = 'https://api.openbrewerydb.org/breweries?per_page=50&by_city=' + city;
+		let url = 'https://api.openbrewerydb.org/breweries/search?per_page=50&query=' + search;
 		const res = await fetch(url);
 		const json = await res.json();
 		console.log('json in makeApiCall', json);
@@ -34,7 +34,7 @@ function App() {
 		() => {
 			makeApiCall();
 		},
-		[ city ]
+		[ search ]
 	);
 
 	return (
@@ -51,8 +51,8 @@ function App() {
 					setBreweryData,
 					filter,
 					setFilter,
-					city,
-					setCity
+					search,
+					setSearch
 				}}
 			>
 				<NavBar />

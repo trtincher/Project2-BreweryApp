@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Form({ setCity }) {
+function Form({ setSearch }) {
 	const [ input, setInput ] = useState('');
 
 	const handleChange = (e) => {
@@ -11,14 +11,19 @@ function Form({ setCity }) {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		//console.log('Form.js onSubmit Clicked');
-		setCity(input);
+		setSearch(input);
 		setInput('');
 	};
 
 	return (
 		<div className="Form">
 			<form onSubmit={onSubmit}>
-				<input type="text" placeholder="Search by City" value={input} onChange={handleChange} />
+				<input
+					type="text"
+					placeholder="Search by City,State,or Brewery Name"
+					value={input}
+					onChange={handleChange}
+				/>
 				<input type="submit" />
 			</form>
 		</div>

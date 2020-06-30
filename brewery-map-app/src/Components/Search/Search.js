@@ -14,7 +14,7 @@ function Search() {
 
 	return (
 		<div className="Search">
-			<Form setCity={dataContext.setCity} />
+			<Form setSearch={dataContext.setSearch} />
 			<CardList />
 		</div>
 	);

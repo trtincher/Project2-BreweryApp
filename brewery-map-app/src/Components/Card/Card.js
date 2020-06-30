@@ -5,10 +5,13 @@ import { DataContext } from '../App/App';
 function Card({ brewery }) {
 	const dataContext = useContext(DataContext);
 	//console.log('dataContext', dataContext);
+	console.log('brewery Card', brewery);
+	console.log('dataContext.faves in Card', dataContext.faves);
 
-	let favFilter = dataContext.faves.indexOf(brewery) === -1 ? 'far' : 'fas';
+	let favFilter = dataContext.faves.find((element) => element.name === brewery.name) === -1 ? 'far' : 'fas';
 	let wishFilter = dataContext.wishlist.indexOf(brewery) === -1 ? 'far' : 'fas';
 	let visitFilter = dataContext.visited.indexOf(brewery) === -1 ? 'far' : 'fas';
+	console.log('favFilter Card', favFilter);
 
 	const handleFaveToggle = (brewery) => {
 		const favesArray = [ ...dataContext.faves ];
