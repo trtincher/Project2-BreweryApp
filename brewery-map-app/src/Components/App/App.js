@@ -16,8 +16,8 @@ function App() {
 	const [ filter, setFilter ] = useState('');
 	const [ search, setSearch ] = useState('');
 
-	console.log('App breweryData', breweryData);
-	// console.log('App faves', faves);
+	//console.log('App breweryData', breweryData);
+	console.log('App faves', faves);
 	// console.log('App wishlist', wishlist);
 	// console.log('App visited', visited);
 	// console.log('filter', filter);
@@ -26,7 +26,7 @@ function App() {
 		let url = 'https://api.openbrewerydb.org/breweries/search?per_page=50&query=' + search;
 		const res = await fetch(url);
 		const json = await res.json();
-		console.log('json in makeApiCall', json);
+		//console.log('json in makeApiCall', json);
 		setBreweryData(json);
 	};
 

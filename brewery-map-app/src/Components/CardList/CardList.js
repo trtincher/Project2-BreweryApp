@@ -18,7 +18,15 @@ function CardList() {
 		breweryArr = dataContext.breweryData;
 	}
 
-	const breweries = breweryArr.map((brewery) => <Card key={brewery.id} brewery={brewery} />);
+	const breweries = breweryArr.map((brewery) => {
+		let inFaves = dataContext.faves.findIndex((el) => el.name === brewery.name);
+		let inWishlist = dataContext.wishlist.findIndex((el) => el.name === brewery.name);
+		let inVisited = dataContext.visited.findIndex((el) => el.name === brewery.name);
+
+		return (
+			<Card key={brewery.id} brewery={brewery} inFaves={inFaves} inWishlist={inWishlist} inVisited={inVisited} />
+		);
+	});
 
 	return <div className="CardList">{breweries}</div>;
 }
