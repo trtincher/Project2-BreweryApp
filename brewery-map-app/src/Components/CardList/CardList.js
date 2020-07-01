@@ -1,6 +1,16 @@
 import React, { useContext } from 'react';
-import Card from '../Card/Card';
+import BrewCard from '../BrewCard/BrewCard';
 import { DataContext } from '../App/App';
+import styled from 'styled-components';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+const BrewCardDiv = styled.div`
+	padding: 2rem 0;
+	display: flex;
+	justify-content: center;
+`;
 
 function CardList() {
 	const dataContext = useContext(DataContext);
@@ -24,11 +34,25 @@ function CardList() {
 		let inVisited = dataContext.visited.findIndex((el) => el.name === brewery.name);
 
 		return (
-			<Card key={brewery.id} brewery={brewery} inFaves={inFaves} inWishlist={inWishlist} inVisited={inVisited} />
+			<Col md={6} lg={4}>
+				<BrewCardDiv>
+					<BrewCard
+						key={brewery.id}
+						brewery={brewery}
+						inFaves={inFaves}
+						inWishlist={inWishlist}
+						inVisited={inVisited}
+					/>
+				</BrewCardDiv>
+			</Col>
 		);
 	});
 
-	return <div className="CardList">{breweries}</div>;
+	return (
+		<Container>
+			<Row>{breweries}</Row>
+		</Container>
+	);
 }
 
 export default CardList;

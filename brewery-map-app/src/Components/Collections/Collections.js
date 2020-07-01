@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import CardList from '../CardList/CardList';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Card from 'react-bootstrap/Card';
+import Nav from 'react-bootstrap/Nav';
 import { DataContext } from '../App/App';
 
 function Collections() {
@@ -16,19 +18,27 @@ function Collections() {
 
 	return (
 		<div className="Collections">
-			<Dropdown>
-				<Dropdown.Toggle variant="success" id="dropdown-basic">
-					Filters
-				</Dropdown.Toggle>
-				<Dropdown.Menu>
-					<Dropdown.Item onClick={handleFilterClick}>VISITED</Dropdown.Item>
-					<Dropdown.Item onClick={handleFilterClick}>WISHLIST</Dropdown.Item>
-					<Dropdown.Item onClick={handleFilterClick}>FAVES</Dropdown.Item>
-				</Dropdown.Menu>
-			</Dropdown>
-			{/* <Search /> */}
-			<h1>{dataContext.filter}</h1>
-			<CardList />
+			<Card>
+				<Card.Header>
+					<Nav variant="tabs" defaultActiveKey="#first">
+						<Nav.Item>
+							<Dropdown.Item onClick={handleFilterClick}>VISITED</Dropdown.Item>
+						</Nav.Item>
+						<Nav.Item>
+							<Dropdown.Item onClick={handleFilterClick}>WISHLIST</Dropdown.Item>
+						</Nav.Item>
+						<Nav.Item>
+							<Dropdown.Item onClick={handleFilterClick}>FAVES</Dropdown.Item>
+						</Nav.Item>
+					</Nav>
+				</Card.Header>
+				<Card.Body>
+					<Card.Title>{dataContext.filter}</Card.Title>
+					<Card.Text>
+						<CardList />
+					</Card.Text>
+				</Card.Body>
+			</Card>
 		</div>
 	);
 }

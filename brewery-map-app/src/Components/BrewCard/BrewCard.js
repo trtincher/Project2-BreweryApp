@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './Card.css';
 import { DataContext } from '../App/App';
+import Card from 'react-bootstrap/Card';
 
-function Card({ brewery, inFaves, inWishlist, inVisited }) {
+function BrewCard({ brewery, inFaves, inWishlist, inVisited }) {
 	const dataContext = useContext(DataContext);
 	//console.log('dataContext', dataContext);
 	//console.log('brewery Card', brewery);
@@ -64,9 +64,13 @@ function Card({ brewery, inFaves, inWishlist, inVisited }) {
 	}, []);
 
 	return (
-		<div className="Card">
-			<h3>{brewery.name}</h3>
-			<div className="iconDiv">
+		<Card style={{ width: '18rem' }}>
+			<Card.Img
+				variant="top"
+				src="https://res.cloudinary.com/dugmhtotn/image/upload/v1593620446/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash_lb639l.jpg"
+			/>
+			<Card.Body>
+				<Card.Title>{brewery.name}</Card.Title>
 				<div className="toggleDiv">
 					<i className={`${favFilter} fa-heart`} id="fav-icon" onClick={() => handleFaveToggle(brewery)} />
 					<i
@@ -80,14 +84,9 @@ function Card({ brewery, inFaves, inWishlist, inVisited }) {
 						onClick={() => handleVisitedToggle(brewery)}
 					/>
 				</div>
-				<div className="lableDiv">
-					<span>Favorites</span>
-					<span>Wishlist</span>
-					<span>Visited</span>
-				</div>
-			</div>
-		</div>
+			</Card.Body>
+		</Card>
 	);
 }
 
-export default Card;
+export default BrewCard;

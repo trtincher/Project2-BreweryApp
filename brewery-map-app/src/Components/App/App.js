@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
+import Header from '../Header/Header';
 import Landing from '../Landing/Landing';
 import Collections from '../Collections/Collections';
 import Search from '../Search/Search';
@@ -56,7 +56,7 @@ function App() {
 					setSearch
 				}}
 			>
-				<NavBar />
+				<Header />
 				<Route exact path="/" component={Landing} />
 				<Route path="/collections" component={Collections} />
 				<Route path="/search" component={Search} />
