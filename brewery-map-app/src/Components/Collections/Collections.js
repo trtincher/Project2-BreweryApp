@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import CardList from '../CardList/CardList';
-import Search from '../Search/Search';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { DataContext } from '../App/App';
-import './Collections.css';
 
 function Collections() {
 	const dataContext = useContext(DataContext);
@@ -17,19 +16,18 @@ function Collections() {
 
 	return (
 		<div className="Collections">
-			<div className="filter-tabs">
-				<div className="filter-group" onClick={handleFilterClick}>
-					VISITED
-				</div>
-				<div className="filter-group" onClick={handleFilterClick}>
-					WISHLIST
-				</div>
-				<div className="filter-group" onClick={handleFilterClick}>
-					FAVES
-				</div>
-			</div>
+			<Dropdown>
+				<Dropdown.Toggle variant="success" id="dropdown-basic">
+					Filters
+				</Dropdown.Toggle>
+				<Dropdown.Menu>
+					<Dropdown.Item onClick={handleFilterClick}>VISITED</Dropdown.Item>
+					<Dropdown.Item onClick={handleFilterClick}>WISHLIST</Dropdown.Item>
+					<Dropdown.Item onClick={handleFilterClick}>FAVES</Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
 			{/* <Search /> */}
-			<h1>{dataContext.filter + ' BREWERIES'}</h1>
+			<h1>{dataContext.filter}</h1>
 			<CardList />
 		</div>
 	);

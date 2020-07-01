@@ -5,6 +5,7 @@ import Landing from '../Landing/Landing';
 import Collections from '../Collections/Collections';
 import Search from '../Search/Search';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const DataContext = createContext();
 

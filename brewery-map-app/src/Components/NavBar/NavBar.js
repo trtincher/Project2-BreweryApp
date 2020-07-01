@@ -18,6 +18,17 @@ const NavMain = styled.nav`
 		top: 0;
 		transition: 300ms ease;
 	}
+
+	@media screen and (min-width: 768px) {
+		.up {
+			display: block;
+			top: 0;
+		}
+		.dropdown {
+			display: block;
+			top: 0;
+		}
+	}
 `;
 
 const NavLinks = styled.div`
@@ -38,6 +49,11 @@ const NavLinks = styled.div`
 		padding: 1rem 3rem;
 		font-size: 2rem;
 		display: flex;
+	}
+	@media screen and (min-width: 768px) {
+		a {
+			display: inline;
+		}
 	}
 `;
 
