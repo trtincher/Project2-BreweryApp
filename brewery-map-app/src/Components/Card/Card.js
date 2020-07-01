@@ -8,10 +8,11 @@ function Card({ brewery, inFaves, inWishlist, inVisited }) {
 	//console.log('brewery Card', brewery);
 	//console.log('dataContext.faves in Card', dataContext.faves);
 	const [ favFilter, setFaveFilter ] = useState('far');
+	console.log('favFilter :', favFilter);
 	const [ wishFilter, setWishFilter ] = useState('far');
 	const [ visitFilter, setVisitFilter ] = useState('far');
 
-	const handleFaveToggle = () => {
+	const handleFaveToggle = (brewery) => {
 		const favesArray = [ ...dataContext.faves ];
 		const breweryIndex = favesArray.findIndex((el) => el.name === brewery.name);
 
@@ -26,7 +27,7 @@ function Card({ brewery, inFaves, inWishlist, inVisited }) {
 		dataContext.setFaves(favesArray);
 	};
 
-	const handleWishlistToggle = () => {
+	const handleWishlistToggle = (brewery) => {
 		const wishlistArray = [ ...dataContext.wishlist ];
 		const breweryIndex = wishlistArray.findIndex((el) => el.name === brewery.name);
 
@@ -41,7 +42,7 @@ function Card({ brewery, inFaves, inWishlist, inVisited }) {
 		dataContext.setWishlist(wishlistArray);
 	};
 
-	const handleVisitedToggle = () => {
+	const handleVisitedToggle = (brewery) => {
 		const visitedArray = [ ...dataContext.visited ];
 		const breweryIndex = visitedArray.findIndex((el) => el.name === brewery.name);
 
@@ -57,19 +58,27 @@ function Card({ brewery, inFaves, inWishlist, inVisited }) {
 	};
 
 	useEffect(() => {
-		!!inFaves ? setFaveFilter('far') : setFaveFilter('fas');
-		!!inWishlist ? setWishFilter('far') : setWishFilter('fas');
-		!!inVisited ? setVisitFilter('far') : setVisitFilter('fas');
-	});
+		inFaves === -1 ? setFaveFilter('far') : setFaveFilter('fas');
+		inWishlist === -1 ? setWishFilter('far') : setWishFilter('fas');
+		inVisited === -1 ? setVisitFilter('far') : setVisitFilter('fas');
+	}, []);
 
 	return (
 		<div className="Card">
 			<h3>{brewery.name}</h3>
 			<div className="iconDiv">
 				<div className="toggleDiv">
-					<i className={`${favFilter} fa-heart`} id="fav-icon" onClick={handleFaveToggle} />
-					<i className={`${wishFilter} fa-star`} id="fav-icon" onClick={handleWishlistToggle} />
-					<i className={`${visitFilter} fa-check-circle`} id="fav-icon" onClick={handleVisitedToggle} />
+					<i className={`${favFilter} fa-heart`} id="fav-icon" onClick={() => handleFaveToggle(brewery)} />
+					<i
+						className={`${wishFilter} fa-star`}
+						id="fav-icon"
+						onClick={() => handleWishlistToggle(brewery)}
+					/>
+					<i
+						className={`${visitFilter} fa-check-circle`}
+						id="fav-icon"
+						onClick={() => handleVisitedToggle(brewery)}
+					/>
 				</div>
 				<div className="lableDiv">
 					<span>Favorites</span>

@@ -3,6 +3,10 @@ import Form from '../Form/Form';
 import CardList from '../CardList/CardList';
 import { DataContext } from '../App/App';
 
+const searchStyle = {
+	padding: '5rem'
+};
+
 function Search() {
 	const dataContext = useContext(DataContext);
 
@@ -13,7 +17,7 @@ function Search() {
 	}, []);
 
 	return (
-		<div className="Search">
+		<div className="Search" style={searchStyle}>
 			<Form setSearch={dataContext.setSearch} />
 			<CardList />
 		</div>
