@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../App/App';
 import Card from 'react-bootstrap/Card';
+import './BrewCard.css';
 
 function BrewCard({ brewery, inFaves, inWishlist, inVisited }) {
 	const dataContext = useContext(DataContext);

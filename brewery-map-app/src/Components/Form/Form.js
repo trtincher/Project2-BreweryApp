@@ -19,12 +19,7 @@ function Form({ setSearch }) {
 	return (
 		<div className="Form">
 			<form onSubmit={onSubmit}>
-				<input
-					type="text"
-					placeholder="Search by City,State,or Brewery Name"
-					value={input}
-					onChange={handleChange}
-				/>
+				<input type="text" placeholder="City,State,or Name" value={input} onChange={handleChange} />
 				<input type="submit" />
 			</form>
 		</div>
