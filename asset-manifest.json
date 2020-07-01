@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Project2-BreweryApp/static/css/main.6f426c4c.chunk.css",
+    "main.js": "/Project2-BreweryApp/static/js/main.e06da152.chunk.js",
+    "main.js.map": "/Project2-BreweryApp/static/js/main.e06da152.chunk.js.map",
+    "runtime-main.js": "/Project2-BreweryApp/static/js/runtime-main.73f298bd.js",
+    "runtime-main.js.map": "/Project2-BreweryApp/static/js/runtime-main.73f298bd.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/Project2-BreweryApp/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.7bedbfe9.chunk.js": "/Project2-BreweryApp/static/js/2.7bedbfe9.chunk.js",
+    "static/js/2.7bedbfe9.chunk.js.map": "/Project2-BreweryApp/static/js/2.7bedbfe9.chunk.js.map",
+    "index.html": "/Project2-BreweryApp/index.html",
+    "precache-manifest.759300050f6dc5eb273cafe75733d2a6.js": "/Project2-BreweryApp/precache-manifest.759300050f6dc5eb273cafe75733d2a6.js",
+    "service-worker.js": "/Project2-BreweryApp/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/Project2-BreweryApp/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.6f426c4c.chunk.css.map": "/Project2-BreweryApp/static/css/main.6f426c4c.chunk.css.map",
+    "static/js/2.7bedbfe9.chunk.js.LICENSE.txt": "/Project2-BreweryApp/static/js/2.7bedbfe9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.73f298bd.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.7bedbfe9.chunk.js",
+    "static/css/main.6f426c4c.chunk.css",
+    "static/js/main.e06da152.chunk.js"
+  ]
+}
