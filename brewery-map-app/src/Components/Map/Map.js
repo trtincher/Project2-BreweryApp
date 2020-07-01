@@ -2,14 +2,13 @@ import React, { useState, useContext } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import './Map.css';
 import { DataContext } from '../App/App';
-import testData from './data';
 
 function Map() {
 	const [ viewport, setViewport ] = useState({
 		latitude: 39.82817,
 		longitude: -98.5795,
-		width: '100vw',
-		height: '100vh',
+		width: '100%',
+		height: '100%',
 		zoom: 3.6
 	});
 	const dataContext = useContext(DataContext);
@@ -19,7 +18,7 @@ function Map() {
 	});
 
 	return (
-		<div>
+		<div className="mapContainer">
 			<ReactMapGL
 				{...viewport}
 				mapboxApiAccessToken={

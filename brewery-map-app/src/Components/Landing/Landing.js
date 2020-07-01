@@ -5,7 +5,7 @@ import About from '../About/About';
 function Landing() {
 	return (
 		<div className="Landing">
-			<h1>Landing</h1>
+			<h1>Your Breweries</h1>
 			<Map />
 			<About />
 		</div>
